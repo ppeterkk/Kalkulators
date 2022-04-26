@@ -2,11 +2,9 @@ from ast import operator
 from tkinter import*
 from math import*
 
-mansLogs=Tk()
+mansLogs = Tk()
 mansLogs.title("Kalkulators")
-mansLogs.geometry("300 x 300")
-poga=Button(mansLogs, text="Sveiki!", bg="green", fg="white")
-poga.pack()
+
 
 
 
@@ -37,6 +35,10 @@ def vienads():
         result = num1 * num2
     elif mathOp == "/":
         result = num1 / num2
+    elif mathOp == "x2":
+        num1**num2
+    elif mathOp == "%":
+        result = num1*0.01*num2
     else: 
         result = 0
     e.delete(0, END)
@@ -63,8 +65,8 @@ def kapinasana():
     global operator
     global num1
     global mathOp
-    num1 = (int(e.get()))
-    num1 = num1 * num1
+    num1 = (float(e.get()))
+    num1 = sqrt(num1)
     e.delete(0, END)
     e.insert(0, num1)
     return 0
@@ -85,11 +87,14 @@ def logaritms():
     global num1
     global mathOp
     num1 = (int(e.get()))
-    num1 = log(num1, 10), 2)\
+    num2 = log10
     # ar bāzi 10
     e.delete(0, END)
     e.insert(0, num1)
     return 0
+
+
+
 
 
 
@@ -110,22 +115,24 @@ btn7 = Button(mansLogs, text="7", padx="30", pady="20", bd=5, command = lambda:b
 btn8 = Button(mansLogs, text="8", padx="30", pady="20", bd=5, command = lambda:btnClick(8))
 btn9 = Button(mansLogs, text="9", padx="30", pady="20", bd=5, command = lambda:btnClick(9))
 
-btnSas = Button(mansLogs, text="+", padx="30", pady="20", bd=5, command = lambda:btnClick("+"))
-btnAtn = Button(mansLogs, text="-", padx="30", pady="20", bd=5, command = lambda:btnClick("-"))
-btnReiz = Button(mansLogs, text="*", padx="30", pady="20", bd=5, command = lambda:btnClick("*"))
-btnDal = Button(mansLogs, text="/", padx="30", pady="20", bd=5, command = lambda:btnClick("/"))
+btnSas = Button(mansLogs, text="+", padx="30", pady="20", bd=5, command = lambda:btnCommand("+"))
+btnAtn = Button(mansLogs, text="-", padx="30", pady="20", bd=5, command = lambda:btnCommand("-"))
+btnReiz = Button(mansLogs, text="*", padx="30", pady="20", bd=5, command = lambda:btnCommand("*"))
+btnDal = Button(mansLogs, text="/", padx="30", pady="20", bd=5, command = lambda:btnCommand("/"))
 #kvādrātsakne, kāpināšana, procenti
 btnKvadr = Button(mansLogs, text="√", padx="30", pady="20", bd=5, command = kvadrSakne)
-btnKapin = Button(mansLogs, text="X2", padx="30", pady="20", bd=5), command = kapinasana)
+btnKapin = Button(mansLogs, text="x2", padx="30", pady="20", bd=5, command = lambda:btnCommand("x2"))
 btnProc = Button(mansLogs, text="%", padx="30", pady="20", bd=5)
 btnPunkts = Button(mansLogs, text="log", padx="25", pady="20", bd=5)
+
+btnLogar = Button(mansLogs, text="%", padx="30", pady="20", bd=5, command = logaritms)
 
 btnVien = Button(mansLogs, text="=", padx="30", pady="20", bd=5, command = vienads)
 btnDel = Button(mansLogs, text="C", padx="30", pady="20", bd=5, command = clear)
 
 
 #definē novietojumu
-e.grid(row=0, column=0, columspan=4)
+e.grid(row=0, column=0, columnspan=4)
 
 btnDel.grid(row=1, column=0)
 btnKapin.grid(row=1, column=1)
@@ -148,16 +155,11 @@ btnAtn.grid(row=4, column=4)
 btn6.grid(row=5, column=0)
 btn8.grid(row=5, column=1)
 btn4.grid(row=5, column=2)
-btnLogaR.grid(row=5, column=3)
+btnLogar.grid(row=5, column=3)
 
 
 btn7.grid(row=4, column=1)
 btnVien.grid(row=1, column=2)
-
-
-
-
-
 
 
 
