@@ -4,7 +4,7 @@ from math import*
 
 mansLogs = Tk()
 mansLogs.title("Kalkulators")
-# mansLogs.geometry("300x300") - izmērs
+# mansLogs.geometry("300x300") - kalkulatora izmērs
 
 def btnClick(number):
     current = e.get()
@@ -146,3 +146,4 @@ btnVien.grid(row=5, column=2)
 btnDel.grid(row=1, column=0)
 
 mansLogs.mainloop()
+
